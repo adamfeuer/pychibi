@@ -9,19 +9,19 @@ Improvements welcome.
 
 
 Requirements
-============
+------------
 
 * Python 2.7
 
 
 Building
-========
+--------
 
 1. `./build.sh`
 
 
 Using
-=====
+-----
 
 1. python
 1. import _chibi_scheme
@@ -30,7 +30,7 @@ Using
 
 
 License
-=======
+-------
 
 MIT License.
 
