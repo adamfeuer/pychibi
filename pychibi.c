@@ -1,9 +1,11 @@
+#include <stdio.h>
 #include <Python.h>
 #include <chibi/eval.h>
 
 static PyObject *PyChibiError;
 
-int execute_scheme(sexp ctx, char* expression) {
+int execute_scheme(sexp ctx, const char* expression) {
+
   /* declare and preserve local variables */
   sexp_gc_var2(obj1, obj2);
   sexp_gc_preserve2(ctx, obj1, obj2);
@@ -38,7 +40,7 @@ pychibi(PyObject *self, PyObject *args)
     sexp_load_standard_env(ctx, NULL, SEXP_SEVEN);
     sexp_load_standard_ports(ctx, NULL, stdin, stdout, stderr, 1);
 
-    char *expression;
+    const char *expression;
     int result = 0;
 
     if (!PyArg_ParseTuple(args, "s", &expression))
@@ -50,7 +52,7 @@ pychibi(PyObject *self, PyObject *args)
 
 
 static PyMethodDef PyChibiMethods[] = {
-    {"scheme",  pychibi, METH_VARARGS,
+    {"eval",  pychibi, METH_VARARGS,
      "Execute scheme"},
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
